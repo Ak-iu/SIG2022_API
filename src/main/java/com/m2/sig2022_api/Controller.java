@@ -26,17 +26,20 @@ public class Controller {
     @Autowired
     Facade facade;
 
-    @GetMapping("/equipements")
-    public void get_equipements() {
-    }
-
-    @GetMapping("/points")
-    public void get_points_depots() {
-    }
 
     @GetMapping("/degradations")
     public ResponseEntity<String> get_degradations(@RequestParam String idEquipement) throws JsonProcessingException {
         List<Degradation> degradationList = facade.findDegradations(idEquipement);
+
+        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        String json = ow.writeValueAsString(degradationList);
+
+        return ResponseEntity.status(HttpStatus.OK).body(json);
+    }
+
+    @GetMapping("/all_degradations")
+    public ResponseEntity<String> get_all_degradations() throws JsonProcessingException {
+        List<Degradation> degradationList = facade.getAllDegradations();
 
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         String json = ow.writeValueAsString(degradationList);
