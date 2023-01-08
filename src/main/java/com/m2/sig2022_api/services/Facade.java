@@ -21,7 +21,10 @@ public class Facade {
         return q.getResultList();
     }
 
-    public Degradation findDegradation(int idDegradation){ return  em.find(Degradation.class,idDegradation);}
+    public List<Degradation> findDegradations( String idEquipement){
+        Query q = em.createQuery("Select d from Degradation d where d.idEquipement =" + idEquipement);
+        return  q.getResultList();
+    }
 
     @Transactional
     public void createDegradation(DegradationDTO degradationDTO){em.persist(new Degradation(degradationDTO.getId_equipement(),degradationDTO.getNature(),degradationDTO.getDate()));}

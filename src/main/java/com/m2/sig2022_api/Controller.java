@@ -1,7 +1,10 @@
 package com.m2.sig2022_api;
 
 import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+import com.m2.sig2022_api.Entity.Degradation;
 import com.m2.sig2022_api.dtos.DegradationDTO;
 import com.m2.sig2022_api.dtos.SuggestionDTO;
 import com.m2.sig2022_api.services.Facade;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
@@ -31,8 +35,13 @@ public class Controller {
     }
 
     @GetMapping("/degradations")
-    public void get_degradations(){
-        //facade.getAllDegradations();
+    public ResponseEntity<String> get_degradations(@RequestParam String idEquipement) throws JsonProcessingException {
+        List<Degradation> degradationList = facade.findDegradations(idEquipement);
+
+        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        String json = ow.writeValueAsString(degradationList);
+
+        return ResponseEntity.status(HttpStatus.OK).body(json);
     }
 
     @PostMapping("/degradations")
