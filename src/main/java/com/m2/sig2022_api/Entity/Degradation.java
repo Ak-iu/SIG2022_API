@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.xml.crypto.Data;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -14,13 +15,15 @@ public class Degradation {
     @GeneratedValue
     private int id;
 
-    private Date date;
+    private String idEquipement;
+    private String date;
 
     private String nature;
 
-    public Degradation(Date date, String nature) {
-        this.date = date;
+    public Degradation(String idEquipement, String nature,String date) {
+        this.idEquipement = idEquipement;
         this.nature = nature;
+        this.date = date;
     }
 
     public Degradation() {
@@ -35,11 +38,19 @@ public class Degradation {
         this.id = id;
     }
 
-    public Date getDate() {
+    public String getIdEquipement() {
+        return idEquipement;
+    }
+
+    public void setIdEquipement(String idEquipement) {
+        this.idEquipement = idEquipement;
+    }
+
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

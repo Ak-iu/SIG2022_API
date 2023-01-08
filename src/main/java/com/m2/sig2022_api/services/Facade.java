@@ -1,6 +1,7 @@
 package com.m2.sig2022_api.services;
 
 import com.m2.sig2022_api.Entity.Degradation;
+import com.m2.sig2022_api.dtos.DegradationDTO;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
@@ -23,6 +24,6 @@ public class Facade {
     public Degradation findDegradation(int idDegradation){ return  em.find(Degradation.class,idDegradation);}
 
     @Transactional
-    public void createDegradation(Date date,String nature){ em.persist(new Degradation(date,nature));}
+    public void createDegradation(DegradationDTO degradationDTO){em.persist(new Degradation(degradationDTO.getId_equipement(),degradationDTO.getNature(),degradationDTO.getDate()));}
 
 }
