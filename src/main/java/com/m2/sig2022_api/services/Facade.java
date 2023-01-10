@@ -1,7 +1,9 @@
 package com.m2.sig2022_api.services;
 
 import com.m2.sig2022_api.Entity.Degradation;
+import com.m2.sig2022_api.Entity.Suggestion;
 import com.m2.sig2022_api.dtos.DegradationDTO;
+import com.m2.sig2022_api.dtos.SuggestionDTO;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
@@ -30,5 +32,8 @@ public class Facade {
     public void createDegradation(DegradationDTO degradationDTO){
         em.persist(new Degradation(degradationDTO.getId_equipement(),degradationDTO.getNature(),degradationDTO.getDate()));
     }
-
+    @Transactional
+    public void createSuggestion(SuggestionDTO suggestionDTO) {
+        em.persist(new Suggestion(suggestionDTO.getType(), suggestionDTO.getCoord_x(), suggestionDTO.getCoord_x()));
+    }
 }
