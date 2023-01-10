@@ -6,6 +6,7 @@ public class DegradationDTO {
     private String nature;
     private String date;
     private String id_equipement;
+    private String type;
 
 
     public String getNature() {
@@ -31,4 +32,13 @@ public class DegradationDTO {
     public void setId_equipement(String id_equipement) {
         this.id_equipement = id_equipement;
     }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
 }

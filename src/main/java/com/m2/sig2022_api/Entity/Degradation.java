@@ -17,13 +17,14 @@ public class Degradation {
 
     private String idEquipement;
     private String date;
-
     private String nature;
+    private String type;
 
-    public Degradation(String idEquipement, String nature,String date) {
+    public Degradation(String idEquipement, String nature, String date, String type) {
         this.idEquipement = idEquipement;
         this.nature = nature;
         this.date = date;
+        this.type = type;
     }
 
     public Degradation() {
@@ -60,5 +61,13 @@ public class Degradation {
 
     public void setNature(String nature) {
         this.nature = nature;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

@@ -28,7 +28,7 @@ public class Facade {
 
     @Transactional
     public void createDegradation(DegradationDTO degradationDTO){
-        em.persist(new Degradation(degradationDTO.getId_equipement(),degradationDTO.getNature(),degradationDTO.getDate()));
+        em.persist(new Degradation(degradationDTO.getId_equipement(), degradationDTO.getNature(), degradationDTO.getDate(), degradationDTO.getType()));
     }
 
 }
