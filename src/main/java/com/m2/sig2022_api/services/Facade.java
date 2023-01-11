@@ -35,6 +35,5 @@ public class Facade {
     @Transactional
     public void createSuggestion(SuggestionDTO suggestionDTO) {
         em.persist(new Suggestion(suggestionDTO.getType(), suggestionDTO.getCoords_x(), suggestionDTO.getCoords_y()));
-        System.out.println(suggestionDTO.getCoords_x());
     }
 }
