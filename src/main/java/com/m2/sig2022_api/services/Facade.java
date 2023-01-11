@@ -19,13 +19,18 @@ public class Facade {
     EntityManager em;
 
     public List<Degradation> getAllDegradations(){
-        Query q = em.createQuery("Select d from Degradation d");
+        Query q = em.createQuery("Select d from Degradation d where d.repare=false ");
         return q.getResultList();
     }
 
     public List<Degradation> findDegradations( String idEquipement){
-        Query q = em.createQuery("Select d from Degradation d where d.idEquipement =" + idEquipement);
+        Query q = em.createQuery("Select d from Degradation d where d.idEquipement =" + idEquipement + " and d.repare=false");
         return  q.getResultList();
+    }
+
+    public List<Suggestion> getSuggestions() {
+        Query q = em.createQuery("Select s from Suggestion s ");
+        return q.getResultList();
     }
 
     @Transactional
@@ -35,5 +40,11 @@ public class Facade {
     @Transactional
     public void createSuggestion(SuggestionDTO suggestionDTO) {
         em.persist(new Suggestion(suggestionDTO.getType(), suggestionDTO.getCoords_x(), suggestionDTO.getCoords_y()));
+    }
+
+    @Transactional
+    public void reparer(int id_degradation) {
+        Degradation degradation = em.find(Degradation.class, id_degradation);
+        degradation.setRepare(true);
     }
 }
