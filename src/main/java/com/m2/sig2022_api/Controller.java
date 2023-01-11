@@ -52,7 +52,7 @@ public class Controller {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @PostMapping("/equipement")
+    @PostMapping("/suggestion")
     public ResponseEntity post_equipement(@RequestBody SuggestionDTO suggestionDTO){
         facade.createSuggestion(suggestionDTO);
         return ResponseEntity.ok(HttpStatus.OK);
