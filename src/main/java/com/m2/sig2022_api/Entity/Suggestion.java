@@ -13,8 +13,8 @@ public class Suggestion {
 
     String type;
 
-    double coordonnes_x;
-    double coordonnes_y;
+    Double coordonnes_x;
+    Double coordonnes_y;
 
     public Suggestion() {
 
@@ -36,23 +36,23 @@ public class Suggestion {
         this.type = type;
     }
 
-    public double getCoordonnes_x() {
+    public Double getCoordonnes_x() {
         return coordonnes_x;
     }
 
-    public void setCoordonnes_x(double coordonnes_x) {
+    public void setCoordonnes_x(Double coordonnes_x) {
         this.coordonnes_x = coordonnes_x;
     }
 
-    public double getCoordonnes_y() {
+    public Double getCoordonnes_y() {
         return coordonnes_y;
     }
 
-    public void setCoordonnes_y(double coordonnes_y) {
+    public void setCoordonnes_y(Double coordonnes_y) {
         this.coordonnes_y = coordonnes_y;
     }
 
-    public Suggestion(String type, double coordonnes_x, double coordonnes_y) {
+    public Suggestion(String type, Double coordonnes_x,Double coordonnes_y) {
         this.type = type;
         this.coordonnes_x = coordonnes_x;
         this.coordonnes_y = coordonnes_y;
