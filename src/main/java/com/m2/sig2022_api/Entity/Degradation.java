@@ -19,12 +19,14 @@ public class Degradation {
     private String date;
     private String nature;
     private String type;
+    private boolean repare;
 
     public Degradation(String idEquipement, String nature, String date, String type) {
         this.idEquipement = idEquipement;
         this.nature = nature;
         this.date = date;
         this.type = type;
+        this.repare = false;
     }
 
     public Degradation() {
@@ -69,5 +71,13 @@ public class Degradation {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public boolean isRepare() {
+        return repare;
+    }
+
+    public void setRepare(boolean repare) {
+        this.repare = repare;
     }
 }
