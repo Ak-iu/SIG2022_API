@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.m2.sig2022_api.Entity.Degradation;
 import com.m2.sig2022_api.Entity.Suggestion;
 import com.m2.sig2022_api.dtos.DegradationDTO;
+import com.m2.sig2022_api.dtos.ReparationDTO;
 import com.m2.sig2022_api.dtos.SuggestionDTO;
 import com.m2.sig2022_api.services.Facade;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,8 +63,8 @@ public class Controller {
     }
 
     @PostMapping("/reparer")
-    public ResponseEntity reparer_degradation(@RequestParam int id) {
-        facade.reparer(id);
+    public ResponseEntity<String> reparer_degradation(@RequestBody ReparationDTO reparationDTO) {
+        facade.reparer(reparationDTO.getId());
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
